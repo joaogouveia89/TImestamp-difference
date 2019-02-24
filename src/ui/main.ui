@@ -1,0 +1,196 @@
+<interface>
+  <object id="window" class="GtkWindow">
+    <property name="visible">True</property>
+    <property name="title">Hours Amount Calculation</property>
+    <property name="border-width">10</property>
+    <property name="default-width">600</property>
+    <property name="default-height">400</property>
+    <property name="resizable">false</property>
+    <child>
+      <object id="grid" class="GtkGrid">
+        <property name="visible">True</property>
+
+        <!-- TIMESTAMP 1-->
+
+        <!-- HOUR 1 -->
+        <child>
+          <object id="hour1label" class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="label">Hour</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object id="hour1entry" class="GtkEntry">
+            <property name="visible">True</property>
+            <property name="max-length">2</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+            <property name="width">1</property>
+          </packing>
+        </child>
+        <!-- MIN 1 -->
+        <child>
+          <object id="min1label" class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="label">Minute</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object id="min1entry" class="GtkEntry">
+            <property name="visible">True</property>
+            <property name="max-length">2</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">1</property>
+            <property name="width">1</property>
+          </packing>
+        </child>
+        <!-- SEC 1 -->
+        <child>
+          <object id="sec1label" class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="label">Second</property>
+          </object>
+          <packing>
+            <property name="left-attach">2</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object id="sec1entry" class="GtkEntry">
+            <property name="visible">True</property>
+            <property name="max-length">2</property>
+          </object>
+          <packing>
+            <property name="left-attach">2</property>
+            <property name="top-attach">1</property>
+            <property name="width">1</property>
+          </packing>
+        </child>
+
+        <!-- TIMESTAMP 2-->
+
+        <!-- HOUR 2 -->
+        <child>
+          <object id="hour2label" class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="label">Hour</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object id="hour2entry" class="GtkEntry">
+            <property name="visible">True</property>
+            <property name="max-length">2</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">3</property>
+            <property name="width">1</property>
+          </packing>
+        </child>
+        <!-- MIN 1 -->
+        <child>
+          <object id="min2label" class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="label">Minute</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object id="min2entry" class="GtkEntry">
+            <property name="visible">True</property>
+            <property name="max-length">2</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">3</property>
+            <property name="width">1</property>
+          </packing>
+        </child>
+        <!-- SEC 1 -->
+        <child>
+          <object id="sec2label" class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="label">Second</property>
+          </object>
+          <packing>
+            <property name="left-attach">2</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object id="sec2entry" class="GtkEntry">
+            <property name="visible">True</property>
+            <property name="max-length">2</property>
+          </object>
+          <packing>
+            <property name="left-attach">2</property>
+            <property name="top-attach">3</property>
+            <property name="width">1</property>
+          </packing>
+        </child>
+
+        <child>
+          <object id="emptyrow" class="GtkLabel">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object id="buttonCalculate" class="GtkButton">
+            <property name="visible">True</property>
+            <property name="label">Calculate</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">5</property>
+          </packing>
+        </child>
+
+        <child>
+          <object id="emptyrow2" class="GtkLabel">
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">6</property>
+          </packing>
+        </child>
+
+        <child>
+          <object id="result" class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="label"></property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">7</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+      </packing> 
+    </child>
+  </object>
+</interface>
