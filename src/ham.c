@@ -1,7 +1,35 @@
 #include "app.h"
 
 // gcc `pkg-config --cflags gtk+-3.0` -o hours-amount-calculation src/ham.c `pkg-config --libs gtk+-3.0`
+GtkWindow *window = NULL;
 GtkLabel* result = NULL;
+
+
+static gboolean deleteEvent( GtkWidget *widget,
+                              GdkEvent  *event,
+                              gpointer   data )
+{
+    g_print ("delete event occurred\n");
+
+    return FALSE;
+}
+
+static void destroy( GtkWidget *widget,
+                     gpointer   data )
+{
+    gtk_main_quit ();
+}
+
+GtkWindow* setupWindow(GtkBuilder* builder){
+   /* Connect signal handlers to the constructed widgets. */
+   window = GTK_WINDOW(gtk_builder_get_object (builder, APP_NAME));
+   gtk_window_set_decorated(window, GTK_WINDOW_TOPLEVEL);
+   g_signal_connect (window, "delete-event",
+                  G_CALLBACK (deleteEvent), NULL);
+
+    g_signal_connect (window, "destroy",
+                  G_CALLBACK (destroy), NULL);
+}
 
 int isFieldEmpty(const gchar* data){
   if(data == NULL || data[0] == '\0')
@@ -15,7 +43,8 @@ int validateData(const gchar* field){
    gCharToInt(field[1]) != -1 &&
    timeStrToInt(field) >= 0 && 
    timeStrToInt(field) < 24)
-    return 1;  
+    return 1;
+    showErrorDialog(window, "Fields should have only numeric characters");
   return 0;
 }
 
@@ -46,7 +75,6 @@ void calculateHours(GtkWidget *widget, gpointer *data){
   diff = difference(ts1, ts2);
 
   if(result != NULL){
-    g_print("entrouu");
     gchar * labeltxt = g_strdup_printf("Result: %i hours %i minutes %i seconds", diff.hour, diff.min, diff.sec);
     gtk_label_set_text(result, labeltxt);
   }
@@ -54,8 +82,6 @@ void calculateHours(GtkWidget *widget, gpointer *data){
 
 
 int main(int argc, char *argv[]){
-	
-	GObject *window = NULL;
 	GObject* calculateButton = NULL;
 	GError *error = NULL;
   TList* list = NULL;
@@ -73,9 +99,7 @@ int main(int argc, char *argv[]){
       return 1;
     }
 
-    /* Connect signal handlers to the constructed widgets. */
-   window = gtk_builder_get_object (builder, APP_NAME);
-   g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
+   window = setupWindow(builder);
 
    // first two intervals = required
    ts1.hour = gtk_builder_get_object(builder, "hour1entry");

@@ -5,6 +5,7 @@
 #include <gtk/gtk.h>
 #include "convert.h"
 #include "constants.h"
+#include "dialogs.h"
 #include "timestamp.h"
 
 #endif
