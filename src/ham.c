@@ -3,10 +3,33 @@
 // gcc `pkg-config --cflags gtk+-3.0` -o hours-amount-calculation src/ham.c `pkg-config --libs gtk+-3.0`
 GtkLabel* result = NULL;
 
+int isFieldEmpty(const gchar* data){
+  if(data == NULL || data[0] == '\0')
+    return 1;
+  return 0;
+}
+
+int validateData(const gchar* field){
+  if(isFieldEmpty(field) == 0 &&
+   gCharToInt(field[0]) != -1 &&
+   gCharToInt(field[1]) != -1)
+    return 1;  
+  return 0;
+}
+
 
 void calculateHours(GtkWidget *widget, gpointer *data){
   TList* list = (TList*) data;
   TList* aux = list;
+  if(validateData(gtk_entry_get_text (GTK_ENTRY ((aux->t).hour))) == 0 ||
+    validateData(gtk_entry_get_text (GTK_ENTRY ((aux->t).minute))) == 0 ||
+    validateData(gtk_entry_get_text (GTK_ENTRY ((aux->t).second))) == 0 ||
+    validateData(gtk_entry_get_text (GTK_ENTRY ((aux->next->t).hour))) == 0 ||
+    validateData(gtk_entry_get_text (GTK_ENTRY ((aux->next->t).minute))) == 0 ||
+    validateData(gtk_entry_get_text (GTK_ENTRY ((aux->next->t).second))) == 0
+    ){
+    return;
+  }
 
   timestamp ts1, ts2, diff;
 
@@ -20,18 +43,9 @@ void calculateHours(GtkWidget *widget, gpointer *data){
 
   diff = difference(ts1, ts2);
 
-  // timestamp res;
-
-  // while(aux != NULL){
-  //    // entry_text1 = gtk_entry_get_text (GTK_ENTRY ((aux->t).hour));
-  //    g_print ("entrou\n");
-  //    res = difference(aux->t, aux->next->t);
-  //    aux = aux->next->next; //jump 2 positions
-  // }
-
   if(result != NULL){
     g_print("entrouu");
-    gchar * labeltxt = g_strdup_printf("Result: %i : %i : %i", diff.hour, diff.min, diff.sec);
+    gchar * labeltxt = g_strdup_printf("Result: %i hours %i minutes %i seconds", diff.hour, diff.min, diff.sec);
     gtk_label_set_text(result, labeltxt);
   }
 }

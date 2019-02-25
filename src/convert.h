@@ -23,6 +23,8 @@ int gCharToInt(gchar c){
 			return 8;
 		case '9':
 			return 9;
+		default:
+			return -1;
 	}
 }
 #endif
