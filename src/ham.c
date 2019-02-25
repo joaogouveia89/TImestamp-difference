@@ -12,7 +12,9 @@ int isFieldEmpty(const gchar* data){
 int validateData(const gchar* field){
   if(isFieldEmpty(field) == 0 &&
    gCharToInt(field[0]) != -1 &&
-   gCharToInt(field[1]) != -1)
+   gCharToInt(field[1]) != -1 &&
+   timeStrToInt(field) >= 0 && 
+   timeStrToInt(field) < 24)
     return 1;  
   return 0;
 }
